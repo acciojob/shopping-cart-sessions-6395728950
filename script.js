@@ -25,7 +25,7 @@ function renderProducts() {
 // Render cart list
 // Add item to cart
 function addToCart(productId) {
-    let obj = [{"name": `Product ${productId}`}, {"price": `$${productId * 10}`}];
+    let obj = [{"name": `Product ${productId}`}, {"price": `$${productId * 10}`},{"id":`${productId}`}];
     sessionStorage.setItem(`${productId}`, JSON.stringify(obj));
 }
 
@@ -39,7 +39,7 @@ function renderCart() {
     
     Object.values(sessionData).forEach((data, index) => {
         const li = document.createElement('li');
-        li.innerHTML = `${data[0].name} - ${data[1].price} <button class="btn" value="${index}">Remove Item</button>`;
+        li.innerHTML = `${data[0].name} - ${data[1].price} <button class="btn" value="${data[2].id}">Remove Item</button>`;
         cartlist.appendChild(li);
     });
 }
