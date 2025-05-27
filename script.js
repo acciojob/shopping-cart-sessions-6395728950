@@ -47,12 +47,15 @@ function renderCart() {
 // Remove item from cart
 function removeFromCart(productId) {
     sessionStorage.removeItem(productId);
-    renderCart(); // Re-render cart after removing an item
+    
 }
 
 // Initial render
 renderProducts();
 renderCart();
+function clearCart(){
+	sessionStorage.clear();
+}
 
 document.getElementById('clear-cart-btn').addEventListener("click", () => {
     clearCart();
@@ -62,6 +65,12 @@ const addToCartButtons = document.getElementsByClassName('add-to-cart-btn');
 Array.from(addToCartButtons).forEach(button => {
     button.addEventListener("click", (e) => {
         addToCart(e.target.value);
+    });
+});
+ const removeFromCartButtons = document.getElementsByClassName('btn');
+Array.from(removeFromCartButtons).forEach(button => {
+    button.addEventListener("click", (e) => {
+        removeFromCart(e.target.value);
     });
 });
 
